@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simples</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="js.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="flex items-center justify-between p-4 bg-green-900 text-white">
+        <div class="flex items-center">
+            <img src="IconeExatas.png" alt="Logo" class="h-10 w-10 rounded-full">
+        </div>
+
+        <div class="iconeperfil">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 rounded-full bg-gray-700 p-1" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
+        </div>
+    </header>
+
+    <h1 style="text-align: center; margin: 1%; font-size: 2em; font-weight: bolder; margin-bottom: 0%; display: block;" id="tabelaProjetosTitle">
+        Tabela Projetos</h1>
+    <h1 style="text-align: center; margin: 1%; font-size: 2em; font-weight: bolder; margin-bottom: 0%; display: none;" id="tabelaContratoTitle">Contrato para
+        Imobilizar</h1>
+    <main>
+
+        <div class="principal" style="display: block;" id="tabelaProjetosContainer">
+            <div class="top-section">
+                <button class="attprimeirapagina">Atualizar</button>
+                <h1 style="font-size: 1.3em; font-weight: bolder;">Última Atualização: dd/mm/yyyy - hh:mm</h1>
+            </div>
+
+            <div class="primeiratebela">
+                <div class="overflow-y-auto max-h-96 rounded-md" id="tabelaProjetos">
+                    <div id="tabelaDinamica"></div>
+                </div>
+            </div>
+
+            <div class="bntsinteração">
+                <button class="salvarprimeirapagina" onclick="proximapg()">Proximo</button>
+            </div>
+        </div>
+
+
+
+        <div class="secundaria" style="display: none;" id="tabelaContratoContainer">
+            <p style="font-weight: bolder;">Contrato</p>
+            <div class="top-section">
+                <div class="top-section" style="position: relative;">
+                    <input type="text" id="codigoContratoInput" name="codigoContrato" placeholder="Código do contrato" autocomplete="off" class="codigoContratoSelect">
+                    <div id="sugestoesContrato" class="autocomplete-list" style="position:absolute;top:100%;left:0;width:100%;background:#fff;z-index:1000;border:1px solid #ccc;display:none;"></div>
+                </div>
+                <button class="adicionartabela">Adicionar</button>
+                <button class="voltartabela" onclick="voltarPag()">Voltar</button>
+            </div>
+
+            <!-- Tabela adicionada -->
+            <div class="tabela-scroll" style="margin-top: 32px; overflow-x: auto; border: 2px solid black; border-radius: 5px;" id="tabela-scroll">
+                <table border="1" style="width:100%; border-collapse: collapse; text-align: center; background: #fff;" >
+                    <thead style="background: #e5e7eb;">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Contrato</th>
+                            <th>Status</th>
+                            <th>Data Início</th>
+                            <th>Data Fim</th>
+                            <th>Valor</th>
+                            <th>Responsável</th>
+                            <th>Setor</th>
+                            <th>Tipo</th>
+                            <th>Ações</th>
+                            <th>Confimar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>João Silva</td>
+                            <td>teste</td>
+                            <td><span style='color:green;font-weight:bold;'>Ativo</span></td>
+                            <td>01/01/2025</td>
+                            <td>31/12/2025</td>
+                            <td>R$ 10.000</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i></td>
+                            <td class="confirmar" id="adicionaritem" onclick="AdicionarItem()"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Lucas Lima</td>
+                            <td>teste</td>
+                            <td><span style='color:red;font-weight:bold;'>Inativo</span></td>
+                            <td>15/02/2025</td>
+                            <td>15/08/2025</td>
+                            <td>R$ 8.500</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Marina Souza</td>
+                            <td>teste</td>
+                            <td><span style='color:green;font-weight:bold;'>Ativo</span></td>
+                            <td>10/03/2025</td>
+                            <td>10/09/2025</td>
+                            <td>R$ 12.000</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Pedro Costa</td>
+                            <td>teste</td>
+                            <td><span style='color:orange;font-weight:bold;'>Pendente</span></td>
+                            <td>20/04/2025</td>
+                            <td>20/10/2025</td>
+                            <td>R$ 9.000</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Carla Dias</td>
+                            <td>teste</td>
+                            <td><span style='color:green;font-weight:bold;'>Ativo</span></td>
+                            <td>05/05/2025</td>
+                            <td>05/11/2025</td>
+                            <td>R$ 11.500</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Rafael Nunes</td>
+                            <td>teste</td>
+                            <td><span style='color:red;font-weight:bold;'>Inativo</span></td>
+                            <td>12/06/2025</td>
+                            <td>12/12/2025</td>
+                            <td>R$ 7.800</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Fernanda Luz</td>
+                            <td>teste</td>
+                            <td><span style='color:green;font-weight:bold;'>Ativo</span></td>
+                            <td>18/07/2025</td>
+                            <td>18/01/2026</td>
+                            <td>R$ 13.200</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Paula Reis</td>
+                            <td>teste</td>
+                            <td><span style='color:orange;font-weight:bold;'>Pendente</span></td>
+                            <td>25/08/2025</td>
+                            <td>25/02/2026</td>
+                            <td>R$ 10.700</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Bruno Melo</td>
+                            <td>teste</td>
+                            <td><span style='color:green;font-weight:bold;'>Ativo</span></td>
+                            <td>30/09/2025</td>
+                            <td>30/03/2026</td>
+                            <td>R$ 9.900</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Juliana Paz</td>
+                            <td>teste</td>
+                            <td><span style='color:red;font-weight:bold;'>Inativo</span></td>
+                            <td>02/10/2025</td>
+                            <td>02/04/2026</td>
+                            <td>R$ 8.300</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Marcelo Dias</td>
+                            <td>teste</td>
+                            <td><span style='color:green;font-weight:bold;'>Ativo</span></td>
+                            <td>11/11/2025</td>
+                            <td>11/05/2026</td>
+                            <td>R$ 12.400</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Renata Cruz</td>
+                            <td>teste</td>
+                            <td><span style='color:orange;font-weight:bold;'>Pendente</span></td>
+                            <td>19/12/2025</td>
+                            <td>19/06/2026</td>
+                            <td>R$ 10.200</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Patrícia Lima</td>
+                            <td>teste</td>
+                            <td><span style='color:green;font-weight:bold;'>Ativo</span></td>
+                            <td>23/01/2026</td>
+                            <td>23/07/2026</td>
+                            <td>R$ 11.800</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Eduardo Alves</td>
+                            <td>teste</td>
+                            <td><span style='color:red;font-weight:bold;'>Inativo</span></td>
+                            <td>28/02/2026</td>
+                            <td>28/08/2026</td>
+                            <td>R$ 7.600</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>Simone Rocha</td>
+                            <td>teste</td>
+                            <td><span style='color:green;font-weight:bold;'>Ativo</span></td>
+                            <td>05/03/2026</td>
+                            <td>05/09/2026</td>
+                            <td>R$ 13.000</td>
+                            <td><input type="text" name="" id="" placeholder="OBS" class="inputobs"></td>
+                            <td>
+                                <select name="" id="selecaocj1" class="selectsts">
+                                    <option value="" disabled selected hidden>Código do contrato</option>
+                                    <option value="apple_code">Imobilizar</option>
+                                    <option value="banana_code">Não operando</option>
+                                    <option value="cherry_code">Imobilizado</option>
+                                    <option value="date_code">Outros</option>
+                                </select>
+                            </td>
+                            <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
+                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i>
+                            <td class="confirmar"><i class="fa-solid fa-check fa-2x"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="tabelacarregando" class="tabelacarregando">
+                <h1>Salvando alterações...</h1>
+                <div class="spinner"></div>
+
+            </div>
+    </main>
+
+</body>
+
+</html>

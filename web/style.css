@@ -1,0 +1,661 @@
+@charset "UTF-8";
+
+/* Ícone de Perfil */
+.iconeperfil {
+    border: none;
+    border-radius: 50px;
+    /* Garante que a transição seja suave em ambas as direções */
+    transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.iconeperfil:hover {
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 3px 3px 3px rgba(58, 58, 58, 0.4);
+}
+
+
+/* Primeira tabela (Tabela Projetos) */
+
+/* Container Principal */
+.principal {
+    border: 2px solid #000000;
+    /* Usar altura mínima para que o conteúdo possa expandir */
+    min-height: 75vh; /* Ajustado para min-height para flexibilidade */
+    width: 100vw;  
+    max-width: 1800px; /* Limita a largura máxima para telas grandes, como no seu design */
+    border-radius: 20px; /* Aumentei o border-radius para ser mais notável, 5% pode ser muito pouco */
+    margin: auto;
+    margin-top: 3vh; /* Reduzi a margem superior para melhor visualização em telas menores */
+    padding: 20px; /* Ajustei o padding para ser uniforme e incluído no box-sizing */
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
+    position: relative; /* Necessário para posicionamento absoluto de elementos filhos */
+    display: flex; /* Adiciona flexbox para organizar o conteúdo interno */
+    flex-direction: column; /* Conteúdo em coluna por padrão */
+    justify-content: space-between; /* Espaça o conteúdo: Atualizar/Atualização no topo, Botões no final */
+    z-index: 8;
+}
+
+/* Container para o botão Atualizar e a Última Atualização */
+.top-section {
+    display: flex;
+    flex-direction: row; /* Sempre em linha, independente do tamanho da tela */
+    align-items: center; /* Alinha verticalmente */
+    gap: 20px; /* Espaço entre o select e o botão */
+    margin-bottom: 20px;
+}
+
+/* H1 de Última Atualização - Removendo position: absolute e margins fixas */
+.principal h1[style*="position: absolute"] {
+    /* Remove os estilos inline que causam problemas de responsividade */
+    position: static !important; /* Volta ao fluxo normal */
+    margin-left: 0 !important; /* Remove margem fixa */
+    margin-top: 0 !important; /* Remove margem fixa */
+    font-size: 0.9em; /* Reduz ligeiramente o tamanho da fonte em telas menores */
+    text-align: left; /* Alinha à esquerda */
+    width: auto; /* Deixa a largura se ajustar ao conteúdo */
+    /* Adicione uma margem inferior para separação do botão Atualizar se estiver em coluna */
+    margin-top: 10px; /* Espaço acima do texto */
+    margin-bottom: 10px; /* Espaço abaixo do texto */
+}
+
+@media (min-width: 768px) {
+    .principal h1[style*="position: absolute"] {
+        font-size: 1.1em; /* Aumenta um pouco em telas médias */
+        text-align: right; /* Alinha à direita quando em linha com o botão */
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .principal h1[style*="position: absolute"] {
+        font-size: 1.3em; /* Retorna ao tamanho original em telas grandes */
+    }
+}
+
+/* Botão Atualizar */
+.attprimeirapagina {
+    background-color: rgb(7, 80, 7);
+    color: white;
+    padding: 10px 30px; /* Reduzi o padding horizontal para telas menores */
+    border-radius: 10px;
+    /* Removi margin-left fixo para melhor centralização/alinhamento com flexbox */
+    margin-bottom: 15px; /* Espaço abaixo do botão */
+    font-weight: bolder;
+    width: auto; /* Largura automática */
+    /* display: block; */ /* Já é block por padrão em flex-direction column */
+    text-align: center; /* Centraliza o texto dentro do botão */
+    transition: 0.6s;
+}
+
+.attprimeirapagina:hover {
+    cursor: pointer;
+    background-color: rgb(5, 60, 5); /* Cor mais escura ao passar o mouse */
+    transform: translateY(-5px); /* Adicione esta linha */
+}
+
+@media (min-width: 768px) {
+    .attprimeirapagina {
+        padding: 20px 140px; /* Restaura o padding original em telas maiores */
+        /* display: inline-block; */ /* Já será ajustado pelo flex-direction: row no .top-section */
+        margin-left: 0; /* Garante que não haja margem lateral */
+        margin-bottom: 0; /* Remove margem inferior quando em linha */
+        transform: none;
+    }
+}
+
+/* Primeira Tabela (Container do Scroll) */
+.primeiratebela {
+    /* Removendo bordas e radius que já são aplicadas no wrapper Tailwind dentro do HTML */
+    height: auto; /* Deixe a altura ser controlada pelo conteúdo e max-h do Tailwind */
+    width: 100%; /* Ocupa 100% do pai para melhor responsividade */
+    margin: auto;
+    /* Removido padding-left/right aqui, use padding no .principal ou no td/th */
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
+    flex-grow: 1; /* Permite que a tabela ocupe o espaço restante */
+    overflow-x: auto; /* Adicionado para permitir scroll horizontal na tabela em telas pequenas */
+    -webkit-overflow-scrolling: touch; /* Melhora o scroll em dispositivos iOS */
+    margin-bottom: 0; /* Remove espaço extra abaixo da tabela */
+}
+
+/* Garante que o overflow-y-auto e max-h-96 funcionem corretamente */
+#tabelaProjetos {
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 50vh;
+    max-height: 60vh;
+    min-height: 200px;
+    overflow-y: auto;
+    overflow-x: auto;
+    margin-bottom: 0; /* Remove espaço extra abaixo da tabela */
+}
+
+/* Botões de Interação (Cancelar/Salvar) */
+.bntsinteração {
+    text-align: center;
+    padding: 0;
+    margin-top: 20px; /* Pequeno espaço entre tabela e botões */
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 0;
+}
+
+.cancelarprimeirapagina:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    transition: 0.5s;
+}
+
+.salvarprimeirapagina:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    transition: 0.5s;
+}
+
+@media (min-width: 640px) { /* Exemplo de breakpoint 'sm' */
+    .bntsinteração {
+        flex-direction: row; /* Volta a ser em linha em telas maiores */
+        justify-content: center; /* Centraliza os botões horizontalmente */
+        gap: 150px; /* Aumenta o gap para telas maiores */
+    }
+}
+
+.cancelarprimeirapagina,
+.salvarprimeirapagina {
+    margin-top: 0;
+    padding: 13px 40px; /* Padding equilibrado para todos os tamanhos */
+    border-radius: 10px;
+    font-weight: bolder;
+    flex-shrink: 0;
+    transition: 0.5s;
+    z-index: 9;
+    width: auto;
+    max-width: 250px;
+    text-align: center; /* Centraliza o texto dentro do botão */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 640px) {
+    .cancelarprimeirapagina,
+    .salvarprimeirapagina {
+        padding: 13px 40px; /* Mantém o mesmo padding em telas médias/grandes */
+        width: auto; /* Largura automática em modo linha */
+    }
+}
+
+@media (min-width: 1024px) {
+    .cancelarprimeirapagina,
+    .salvarprimeirapagina {
+        padding: 25px 200px; /* Igual ao botão Atualizar em telas grandes */
+        font-size: 1.2em;
+    }
+}
+
+.cancelarprimeirapagina {
+    background-color: rgb(222, 223, 222);
+    color: rgb(0, 0, 0);
+}
+
+.salvarprimeirapagina {
+    background-color: rgb(7, 80, 7);
+    color: rgb(255, 255, 255);
+}
+
+#trtopo {
+    background-color: #132c0d7c;
+
+}
+
+#trtopo th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #132c0d77;
+}
+
+#tabelaDinamica {
+    height: 80%;
+    min-height: 200px;
+    width: 100%;
+}
+
+#tabelaDinamica table {
+    width: 100%;
+}
+
+/* Segunda tabela (Contrato para Imobilizar) */
+
+.secundaria {
+    border: 2px solid #000000;
+    /* Usar altura mínima para que o conteúdo possa expandir */
+    min-height: 75vh; /* Ajustado para min-height para flexibilidade */
+    width: 100vw;  
+    max-width: 1800px; /* Limita a largura máxima para telas grandes, como no seu design */
+    border-radius: 20px; /* Aumentei o border-radius para ser mais notável, 5% pode ser muito pouco */
+    margin: auto;
+    margin-top: 3vh; /* Reduzi a margem superior para melhor visualização em telas menores */
+    padding: 20px; /* Ajustei o padding para ser uniforme e incluído no box-sizing */
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
+    position: relative; /* Necessário para posicionamento absoluto de elementos filhos */
+    display: flex; /* Adiciona flexbox para organizar o conteúdo interno */
+    flex-direction: column; /* Conteúdo em coluna por padrão */
+    justify-content: space-between; /* Espaça o conteúdo: Atualizar/Atualização no topo, Botões no final */
+    z-index: 8;
+}
+
+/* Container para o botão Atualizar e a Última Atualização */
+.top-section {
+    display: flex;
+    flex-direction: row; /* Sempre em linha, independente do tamanho da tela */
+    align-items: center; /* Alinha verticalmente */
+    gap: 20px; /* Espaço entre o select e o botão */
+    margin-bottom: 20px;
+}
+
+/* H1 de Última Atualização - Removendo position: absolute e margins fixas */
+.secundaria h1[style*="position: absolute"] {
+    /* Remove os estilos inline que causam problemas de responsividade */
+    position: static !important; /* Volta ao fluxo normal */
+    margin-left: 0 !important; /* Remove margem fixa */
+    margin-top: 0 !important; /* Remove margem fixa */
+    font-size: 0.9em; /* Reduz ligeiramente o tamanho da fonte em telas menores */
+    text-align: left; /* Alinha à esquerda */
+    width: auto; /* Deixa a largura se ajustar ao conteúdo */
+    /* Adicione uma margem inferior para separação do botão Atualizar se estiver em coluna */
+    margin-top: 10px; /* Espaço acima do texto */
+    margin-bottom: 10px; /* Espaço abaixo do texto */
+}
+
+@media (min-width: 768px) {
+    .secundaria h1[style*="position: absolute"] {
+        font-size: 1.1em; /* Aumenta um pouco em telas médias */
+        text-align: right; /* Alinha à direita quando em linha com o botão */
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .secundaria h1[style*="position: absolute"] {
+        font-size: 1.3em; /* Retorna ao tamanho original em telas grandes */
+    }
+}
+
+/* Botão Atualizar */
+.adicionartabela {
+    background-color: rgb(7, 80, 7);
+    color: white;
+    padding: 10px 30px; /* Reduzi o padding horizontal para telas menores */
+    border-radius: 10px;
+    /* Removi margin-left fixo para melhor centralização/alinhamento com flexbox */
+    margin-bottom: 15px; /* Espaço abaixo do botão */
+    font-weight: bolder;
+    width: auto; /* Largura automática */
+    /* display: block; */ /* Já é block por padrão em flex-direction column */
+    text-align: center; /* Centraliza o texto dentro do botão */
+    transition: 0.6s;
+}
+
+.adicionartabela:hover {
+    cursor: pointer;
+    background-color: rgb(5, 60, 5); /* Cor mais escura ao passar o mouse */
+    transform: translateY(-5px); /* Adicione esta linha */
+}
+
+@media (min-width: 768px) {
+    .adicionartabela {
+        padding: 20px 140px; /* Restaura o padding original em telas maiores */
+        /* display: inline-block; */ /* Já será ajustado pelo flex-direction: row no .top-section */
+        margin-left: 0; /* Garante que não haja margem lateral */
+        margin-bottom: 0; /* Remove margem inferior quando em linha */
+        transform: none;
+    }
+}
+
+/* Botão Voltar */
+.voltartabela {
+    background-color: rgb(67, 68, 67);
+    color: white;
+    padding: 10px 30px; /* Reduzi o padding horizontal para telas menores */
+    border-radius: 10px;
+    /* Removi margin-left fixo para melhor centralização/alinhamento com flexbox */
+    margin-bottom: 15px; /* Espaço abaixo do botão */
+    font-weight: bolder;
+    width: auto; /* Largura automática */
+    /* display: block; */ /* Já é block por padrão em flex-direction column */
+    text-align: center; /* Centraliza o texto dentro do botão */
+    transition: 0.6s;
+}
+
+.voltartabela:hover {
+    cursor: pointer;
+    background-color: rgb(110, 112, 110); /* Cor mais escura ao passar o mouse */
+    transform: translateY(-5px); /* Adicione esta linha */
+}
+
+@media (min-width: 768px) {
+    .voltartabela {
+        padding: 20px 140px; /* Restaura o padding original em telas maiores */
+        /* display: inline-block; */ /* Já será ajustado pelo flex-direction: row no .top-section */
+        margin-left: 0; /* Garante que não haja margem lateral */
+        margin-bottom: 0; /* Remove margem inferior quando em linha */
+        transform: none;
+    }
+}
+
+/* Primeira Tabela (Container do Scroll) */
+.primeiratebela {
+    /* Removendo bordas e radius que já são aplicadas no wrapper Tailwind dentro do HTML */
+    height: auto; /* Deixe a altura ser controlada pelo conteúdo e max-h do Tailwind */
+    width: 100%; /* Ocupa 100% do pai para melhor responsividade */
+    margin: auto;
+    /* Removido padding-left/right aqui, use padding no .principal ou no td/th */
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
+    flex-grow: 1; /* Permite que a tabela ocupe o espaço restante */
+    overflow-x: auto; /* Adicionado para permitir scroll horizontal na tabela em telas pequenas */
+    -webkit-overflow-scrolling: touch; /* Melhora o scroll em dispositivos iOS */
+    margin-bottom: 0; /* Remove espaço extra abaixo da tabela */
+}
+
+/* Garante que o overflow-y-auto e max-h-96 funcionem corretamente */
+#tabelaProjetos {
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 50vh;
+    max-height: 60vh;
+    min-height: 200px;
+    overflow-y: auto;
+    overflow-x: auto;
+    margin-bottom: 0; /* Remove espaço extra abaixo da tabela */
+}
+
+.codigoContratoSelect{
+    border: 2px solid #918787;
+    margin-top: 2vh;
+    width: 70vh;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.codigoContratoSelect:hover{
+    cursor: pointer;
+
+}
+
+.autocomplete-list {
+    max-height: 400px;
+    overflow-y: auto;
+    background: #fff;
+    border: 3px solid #8a8888;
+    position: absolute;
+    width: 80%;
+    z-index: 1000;
+    border-radius: 10px;
+    display: none;
+}
+.autocomplete-item {
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.autocomplete-item:hover {
+    background: #f0f0f0;
+    transition: 0.5s ease-in-out;
+}
+
+.inputobs {
+    border: 2px solid rgb(124, 124, 124); 
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.selectsts{
+    border: 2px solid rgb(124, 124, 124);
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.formt{
+    cursor: pointer;
+    transition: 0.5s;
+    color: #555555;
+    
+}
+
+.formt:hover{
+    color: rgb(9, 117, 241);
+    transition: 0.5s ease-out;
+}
+
+.lixeira{
+    cursor: pointer;
+    transition: 0.5s;
+    color: #555555;
+}
+
+.lixeira:hover{
+    cursor: pointer;
+    transition: 0.5s ease-out;
+    color: #d31212;
+}
+
+.confirmar{
+    cursor: pointer;
+    transition: 0.5s ease-out;
+    color: #555555;
+}
+
+.confirmar:hover{
+    cursor: pointer;
+    transition: 0.5s ease-out;
+    color: #0bc051;
+}
+
+/* Responsividade para a segunda tabela (tabela de contratos) */
+@media (max-width: 900px) {
+    .secundaria table, .secundaria thead, .secundaria tbody, .secundaria th, .secundaria td, .secundaria tr {
+        display: block;
+        width: 100%;
+    }
+    .secundaria thead {
+        display: none;
+    }
+    .secundaria tr {
+        margin-bottom: 18px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        padding: 8px 0;
+    }
+    .secundaria td {
+        position: relative;
+        padding-left: 50%;
+        min-height: 38px;
+        border: none;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+        box-sizing: border-box;
+    }
+    .secundaria td:last-child {
+        border-bottom: none;
+    }
+    .secundaria td:before {
+        position: absolute;
+        top: 8px;
+        left: 12px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #333;
+        content: attr(data-label);
+    }
+    .secundaria .formt, .secundaria .lixeira {
+        text-align: left;
+        padding-left: 50%;
+    }
+    .secundaria input, .secundaria select {
+        width: 90%;
+        min-width: 120px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+}
+
+/* Ajuste para ícones ficarem alinhados em telas pequenas */
+@media (max-width: 900px) {
+    .secundaria .fa-file, .secundaria .fa-trash-can {
+        font-size: 1.5em;
+        margin-top: 4px;
+    }
+}
+
+/* Tabela secundária: scroll interno para o corpo da tabela */
+.secundaria {
+    /* Garante que o container da tabela não ultrapasse a tela */
+    max-width: 100vw;
+    overflow-x: auto;
+}
+
+.secundaria .tabela-scroll {
+    max-height: 60vh; /* Ajuste conforme necessário para caber na tela */
+    overflow-y: auto;
+    display: block;
+}
+
+.secundaria table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+/* Mantém o cabeçalho fixo ao rolar */
+.secundaria thead th {
+    position: sticky;
+    top: 0;
+    background: #e5e7eb;
+    z-index: 2;
+}
+
+/* Ajuste de largura e centralização para a segunda tabela e seu container */
+.secundaria {
+    max-width: 1200px; /* igual ou próximo à primeira tabela */
+    margin: 0 auto;
+    padding: 10px 10px 0 10px;
+}
+
+.secundaria .tabela-scroll {
+    max-width: 100%;
+    max-height: 55vh; /* levemente menor para caber melhor na tela */
+    margin: 0 auto;
+    padding: 0;
+}
+
+.secundaria table {
+    font-size: 0.97em;
+    width: 98%;
+    margin: 0 auto;
+}
+
+.secundaria th, .secundaria td {
+    padding: 6px 8px;
+}
+
+/* Ajuste para a segunda tabela ficar igual à primeira */
+.secundaria {
+    max-width: 1800px;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 3vh;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid #000;
+    background: #fff;
+}
+
+.secundaria .tabela-scroll {
+    max-width: 100%;
+    max-height: 60vh;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.secundaria table {
+    font-size: 1em;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.secundaria th, .secundaria td {
+    padding: 10px 8px;
+}
+
+@media (max-width: 1300px) {
+    .secundaria {
+        max-width: 98vw;
+    }
+    .secundaria table {
+        width: 100%;
+    }
+}
+
+
+
+/* Tabela demostrativo de salvando as informaçoes  */
+
+.tabelacarregando {
+ position: absolute;
+ background-color: white;
+ width: 30%;
+ height: 40%; 
+ top: 35%;
+ left: 35%;
+ border: 2px solid #949090;
+ border-radius: 10px;
+ box-shadow: 3px 3px 3px #949090;
+ display: none;
+}
+
+.tabelacarregando > h1 {
+    font-weight: bolder;
+    text-align: center;
+    font-size: 1.5em;
+    color: #000000;
+    margin-top: 20px;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(7, 80, 7);
+    margin: 60px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
