@@ -15,54 +15,81 @@
 }
 
 
+.logoImagem {
+    height: 60px;
+}
+
 /* Primeira tabela (Tabela Projetos) */
 
 /* Container Principal */
 .principal {
     border: 2px solid #000000;
     /* Usar altura mínima para que o conteúdo possa expandir */
-    min-height: 75vh; /* Ajustado para min-height para flexibilidade */
-    width: 100vw;  
-    max-width: 1800px; /* Limita a largura máxima para telas grandes, como no seu design */
-    border-radius: 20px; /* Aumentei o border-radius para ser mais notável, 5% pode ser muito pouco */
+    min-height: 75vh;
+    /* Ajustado para min-height para flexibilidade */
+    width: 100vw;
+    max-width: 1800px;
+    /* Limita a largura máxima para telas grandes, como no seu design */
+    border-radius: 20px;
+    /* Aumentei o border-radius para ser mais notável, 5% pode ser muito pouco */
     margin: auto;
-    margin-top: 3vh; /* Reduzi a margem superior para melhor visualização em telas menores */
-    padding: 20px; /* Ajustei o padding para ser uniforme e incluído no box-sizing */
-    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
-    position: relative; /* Necessário para posicionamento absoluto de elementos filhos */
-    display: flex; /* Adiciona flexbox para organizar o conteúdo interno */
-    flex-direction: column; /* Conteúdo em coluna por padrão */
-    justify-content: space-between; /* Espaça o conteúdo: Atualizar/Atualização no topo, Botões no final */
+    margin-top: 3vh;
+    /* Reduzi a margem superior para melhor visualização em telas menores */
+    padding: 20px;
+    /* Ajustei o padding para ser uniforme e incluído no box-sizing */
+    box-sizing: border-box;
+    /* Garante que padding e border sejam incluídos na largura/altura */
+    position: relative;
+    /* Necessário para posicionamento absoluto de elementos filhos */
+    display: flex;
+    /* Adiciona flexbox para organizar o conteúdo interno */
+    flex-direction: column;
+    /* Conteúdo em coluna por padrão */
+    justify-content: space-between;
+    /* Espaça o conteúdo: Atualizar/Atualização no topo, Botões no final */
     z-index: 8;
 }
 
 /* Container para o botão Atualizar e a Última Atualização */
 .top-section {
     display: flex;
-    flex-direction: row; /* Sempre em linha, independente do tamanho da tela */
-    align-items: center; /* Alinha verticalmente */
-    gap: 20px; /* Espaço entre o select e o botão */
+    flex-direction: row;
+    /* Sempre em linha, independente do tamanho da tela */
+    align-items: center;
+    /* Alinha verticalmente */
+    gap: 20px;
+    /* Espaço entre o select e o botão */
     margin-bottom: 20px;
 }
 
 /* H1 de Última Atualização - Removendo position: absolute e margins fixas */
 .principal h1[style*="position: absolute"] {
     /* Remove os estilos inline que causam problemas de responsividade */
-    position: static !important; /* Volta ao fluxo normal */
-    margin-left: 0 !important; /* Remove margem fixa */
-    margin-top: 0 !important; /* Remove margem fixa */
-    font-size: 0.9em; /* Reduz ligeiramente o tamanho da fonte em telas menores */
-    text-align: left; /* Alinha à esquerda */
-    width: auto; /* Deixa a largura se ajustar ao conteúdo */
+    position: static !important;
+    /* Volta ao fluxo normal */
+    margin-left: 0 !important;
+    /* Remove margem fixa */
+    margin-top: 0 !important;
+    /* Remove margem fixa */
+    font-size: 0.9em;
+    /* Reduz ligeiramente o tamanho da fonte em telas menores */
+    text-align: left;
+    /* Alinha à esquerda */
+    width: auto;
+    /* Deixa a largura se ajustar ao conteúdo */
     /* Adicione uma margem inferior para separação do botão Atualizar se estiver em coluna */
-    margin-top: 10px; /* Espaço acima do texto */
-    margin-bottom: 10px; /* Espaço abaixo do texto */
+    margin-top: 10px;
+    /* Espaço acima do texto */
+    margin-bottom: 10px;
+    /* Espaço abaixo do texto */
 }
 
 @media (min-width: 768px) {
     .principal h1[style*="position: absolute"] {
-        font-size: 1.1em; /* Aumenta um pouco em telas médias */
-        text-align: right; /* Alinha à direita quando em linha com o botão */
+        font-size: 1.1em;
+        /* Aumenta um pouco em telas médias */
+        text-align: right;
+        /* Alinha à direita quando em linha com o botão */
         margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
@@ -70,7 +97,8 @@
 
 @media (min-width: 1024px) {
     .principal h1[style*="position: absolute"] {
-        font-size: 1.3em; /* Retorna ao tamanho original em telas grandes */
+        font-size: 1.3em;
+        /* Retorna ao tamanho original em telas grandes */
     }
 }
 
@@ -78,29 +106,40 @@
 .attprimeirapagina {
     background-color: rgb(7, 80, 7);
     color: white;
-    padding: 10px 30px; /* Reduzi o padding horizontal para telas menores */
+    padding: 10px 30px;
+    /* Reduzi o padding horizontal para telas menores */
     border-radius: 10px;
     /* Removi margin-left fixo para melhor centralização/alinhamento com flexbox */
-    margin-bottom: 15px; /* Espaço abaixo do botão */
+    margin-bottom: 15px;
+    /* Espaço abaixo do botão */
     font-weight: bolder;
-    width: auto; /* Largura automática */
-    /* display: block; */ /* Já é block por padrão em flex-direction column */
-    text-align: center; /* Centraliza o texto dentro do botão */
+    width: auto;
+    /* Largura automática */
+    /* display: block; */
+    /* Já é block por padrão em flex-direction column */
+    text-align: center;
+    /* Centraliza o texto dentro do botão */
     transition: 0.6s;
 }
 
 .attprimeirapagina:hover {
     cursor: pointer;
-    background-color: rgb(5, 60, 5); /* Cor mais escura ao passar o mouse */
-    transform: translateY(-5px); /* Adicione esta linha */
+    background-color: rgb(5, 60, 5);
+    /* Cor mais escura ao passar o mouse */
+    transform: translateY(-5px);
+    /* Adicione esta linha */
 }
 
 @media (min-width: 768px) {
     .attprimeirapagina {
-        padding: 20px 140px; /* Restaura o padding original em telas maiores */
-        /* display: inline-block; */ /* Já será ajustado pelo flex-direction: row no .top-section */
-        margin-left: 0; /* Garante que não haja margem lateral */
-        margin-bottom: 0; /* Remove margem inferior quando em linha */
+        padding: 20px 140px;
+        /* Restaura o padding original em telas maiores */
+        /* display: inline-block; */
+        /* Já será ajustado pelo flex-direction: row no .top-section */
+        margin-left: 0;
+        /* Garante que não haja margem lateral */
+        margin-bottom: 0;
+        /* Remove margem inferior quando em linha */
         transform: none;
     }
 }
@@ -108,15 +147,22 @@
 /* Primeira Tabela (Container do Scroll) */
 .primeiratebela {
     /* Removendo bordas e radius que já são aplicadas no wrapper Tailwind dentro do HTML */
-    height: auto; /* Deixe a altura ser controlada pelo conteúdo e max-h do Tailwind */
-    width: 100%; /* Ocupa 100% do pai para melhor responsividade */
+    height: auto;
+    /* Deixe a altura ser controlada pelo conteúdo e max-h do Tailwind */
+    width: 100%;
+    /* Ocupa 100% do pai para melhor responsividade */
     margin: auto;
     /* Removido padding-left/right aqui, use padding no .principal ou no td/th */
-    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
-    flex-grow: 1; /* Permite que a tabela ocupe o espaço restante */
-    overflow-x: auto; /* Adicionado para permitir scroll horizontal na tabela em telas pequenas */
-    -webkit-overflow-scrolling: touch; /* Melhora o scroll em dispositivos iOS */
-    margin-bottom: 0; /* Remove espaço extra abaixo da tabela */
+    box-sizing: border-box;
+    /* Garante que padding e border sejam incluídos na largura/altura */
+    flex-grow: 1;
+    /* Permite que a tabela ocupe o espaço restante */
+    overflow-x: auto;
+    /* Adicionado para permitir scroll horizontal na tabela em telas pequenas */
+    -webkit-overflow-scrolling: touch;
+    /* Melhora o scroll em dispositivos iOS */
+    margin-bottom: 0;
+    /* Remove espaço extra abaixo da tabela */
 }
 
 /* Garante que o overflow-y-auto e max-h-96 funcionem corretamente */
@@ -128,19 +174,22 @@
     min-height: 200px;
     overflow-y: auto;
     overflow-x: auto;
-    margin-bottom: 0; /* Remove espaço extra abaixo da tabela */
+    margin-bottom: 0;
+    /* Remove espaço extra abaixo da tabela */
 }
 
 /* Botões de Interação (Cancelar/Salvar) */
 .bntsinteração {
     text-align: center;
     padding: 0;
-    margin-top: 20px; /* Pequeno espaço entre tabela e botões */
+    margin-top: 20px;
+    /* Pequeno espaço entre tabela e botões */
     display: flex;
     flex-direction: row;
     gap: 30px;
     align-items: center;
-    justify-content: center; /* Centraliza os botões horizontalmente */
+    justify-content: center;
+    /* Centraliza os botões horizontalmente */
     width: 100%;
     z-index: 1;
     margin-bottom: 0;
@@ -158,18 +207,24 @@
     transition: 0.5s;
 }
 
-@media (min-width: 640px) { /* Exemplo de breakpoint 'sm' */
+@media (min-width: 640px) {
+
+    /* Exemplo de breakpoint 'sm' */
     .bntsinteração {
-        flex-direction: row; /* Volta a ser em linha em telas maiores */
-        justify-content: center; /* Centraliza os botões horizontalmente */
-        gap: 150px; /* Aumenta o gap para telas maiores */
+        flex-direction: row;
+        /* Volta a ser em linha em telas maiores */
+        justify-content: center;
+        /* Centraliza os botões horizontalmente */
+        gap: 150px;
+        /* Aumenta o gap para telas maiores */
     }
 }
 
 .cancelarprimeirapagina,
 .salvarprimeirapagina {
     margin-top: 0;
-    padding: 13px 40px; /* Padding equilibrado para todos os tamanhos */
+    padding: 13px 40px;
+    /* Padding equilibrado para todos os tamanhos */
     border-radius: 10px;
     font-weight: bolder;
     flex-shrink: 0;
@@ -177,24 +232,30 @@
     z-index: 9;
     width: auto;
     max-width: 250px;
-    text-align: center; /* Centraliza o texto dentro do botão */
+    text-align: center;
+    /* Centraliza o texto dentro do botão */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 @media (min-width: 640px) {
+
     .cancelarprimeirapagina,
     .salvarprimeirapagina {
-        padding: 13px 40px; /* Mantém o mesmo padding em telas médias/grandes */
-        width: auto; /* Largura automática em modo linha */
+        padding: 13px 40px;
+        /* Mantém o mesmo padding em telas médias/grandes */
+        width: auto;
+        /* Largura automática em modo linha */
     }
 }
 
 @media (min-width: 1024px) {
+
     .cancelarprimeirapagina,
     .salvarprimeirapagina {
-        padding: 25px 200px; /* Igual ao botão Atualizar em telas grandes */
+        padding: 25px 200px;
+        /* Igual ao botão Atualizar em telas grandes */
         font-size: 1.2em;
     }
 }
@@ -236,48 +297,71 @@
 .secundaria {
     border: 2px solid #000000;
     /* Usar altura mínima para que o conteúdo possa expandir */
-    min-height: 75vh; /* Ajustado para min-height para flexibilidade */
-    width: 100vw;  
-    max-width: 1800px; /* Limita a largura máxima para telas grandes, como no seu design */
-    border-radius: 20px; /* Aumentei o border-radius para ser mais notável, 5% pode ser muito pouco */
+    min-height: 75vh;
+    /* Ajustado para min-height para flexibilidade */
+    width: 100vw;
+    max-width: 1800px;
+    /* Limita a largura máxima para telas grandes, como no seu design */
+    border-radius: 20px;
+    /* Aumentei o border-radius para ser mais notável, 5% pode ser muito pouco */
     margin: auto;
-    margin-top: 3vh; /* Reduzi a margem superior para melhor visualização em telas menores */
-    padding: 20px; /* Ajustei o padding para ser uniforme e incluído no box-sizing */
-    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
-    position: relative; /* Necessário para posicionamento absoluto de elementos filhos */
-    display: flex; /* Adiciona flexbox para organizar o conteúdo interno */
-    flex-direction: column; /* Conteúdo em coluna por padrão */
-    justify-content: space-between; /* Espaça o conteúdo: Atualizar/Atualização no topo, Botões no final */
+    margin-top: 3vh;
+    /* Reduzi a margem superior para melhor visualização em telas menores */
+    padding: 20px;
+    /* Ajustei o padding para ser uniforme e incluído no box-sizing */
+    box-sizing: border-box;
+    /* Garante que padding e border sejam incluídos na largura/altura */
+    position: relative;
+    /* Necessário para posicionamento absoluto de elementos filhos */
+    display: flex;
+    /* Adiciona flexbox para organizar o conteúdo interno */
+    flex-direction: column;
+    /* Conteúdo em coluna por padrão */
+    justify-content: space-between;
+    /* Espaça o conteúdo: Atualizar/Atualização no topo, Botões no final */
     z-index: 8;
 }
 
 /* Container para o botão Atualizar e a Última Atualização */
 .top-section {
     display: flex;
-    flex-direction: row; /* Sempre em linha, independente do tamanho da tela */
-    align-items: center; /* Alinha verticalmente */
-    gap: 20px; /* Espaço entre o select e o botão */
+    flex-direction: row;
+    /* Sempre em linha, independente do tamanho da tela */
+    align-items: center;
+    /* Alinha verticalmente */
+    gap: 20px;
+    /* Espaço entre o select e o botão */
     margin-bottom: 20px;
 }
 
 /* H1 de Última Atualização - Removendo position: absolute e margins fixas */
 .secundaria h1[style*="position: absolute"] {
     /* Remove os estilos inline que causam problemas de responsividade */
-    position: static !important; /* Volta ao fluxo normal */
-    margin-left: 0 !important; /* Remove margem fixa */
-    margin-top: 0 !important; /* Remove margem fixa */
-    font-size: 0.9em; /* Reduz ligeiramente o tamanho da fonte em telas menores */
-    text-align: left; /* Alinha à esquerda */
-    width: auto; /* Deixa a largura se ajustar ao conteúdo */
+    position: static !important;
+    /* Volta ao fluxo normal */
+    margin-left: 0 !important;
+    /* Remove margem fixa */
+    margin-top: 0 !important;
+    /* Remove margem fixa */
+    font-size: 0.9em;
+    /* Reduz ligeiramente o tamanho da fonte em telas menores */
+    text-align: left;
+    /* Alinha à esquerda */
+    width: auto;
+    /* Deixa a largura se ajustar ao conteúdo */
     /* Adicione uma margem inferior para separação do botão Atualizar se estiver em coluna */
-    margin-top: 10px; /* Espaço acima do texto */
-    margin-bottom: 10px; /* Espaço abaixo do texto */
+    margin-top: 10px;
+    /* Espaço acima do texto */
+    margin-bottom: 10px;
+    /* Espaço abaixo do texto */
 }
 
 @media (min-width: 768px) {
     .secundaria h1[style*="position: absolute"] {
-        font-size: 1.1em; /* Aumenta um pouco em telas médias */
-        text-align: right; /* Alinha à direita quando em linha com o botão */
+        font-size: 1.1em;
+        /* Aumenta um pouco em telas médias */
+        text-align: right;
+        /* Alinha à direita quando em linha com o botão */
         margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
@@ -285,7 +369,8 @@
 
 @media (min-width: 1024px) {
     .secundaria h1[style*="position: absolute"] {
-        font-size: 1.3em; /* Retorna ao tamanho original em telas grandes */
+        font-size: 1.3em;
+        /* Retorna ao tamanho original em telas grandes */
     }
 }
 
@@ -293,29 +378,40 @@
 .adicionartabela {
     background-color: rgb(7, 80, 7);
     color: white;
-    padding: 10px 30px; /* Reduzi o padding horizontal para telas menores */
+    padding: 10px 30px;
+    /* Reduzi o padding horizontal para telas menores */
     border-radius: 10px;
     /* Removi margin-left fixo para melhor centralização/alinhamento com flexbox */
-    margin-bottom: 15px; /* Espaço abaixo do botão */
+    margin-bottom: 15px;
+    /* Espaço abaixo do botão */
     font-weight: bolder;
-    width: auto; /* Largura automática */
-    /* display: block; */ /* Já é block por padrão em flex-direction column */
-    text-align: center; /* Centraliza o texto dentro do botão */
+    width: auto;
+    /* Largura automática */
+    /* display: block; */
+    /* Já é block por padrão em flex-direction column */
+    text-align: center;
+    /* Centraliza o texto dentro do botão */
     transition: 0.6s;
 }
 
 .adicionartabela:hover {
     cursor: pointer;
-    background-color: rgb(5, 60, 5); /* Cor mais escura ao passar o mouse */
-    transform: translateY(-5px); /* Adicione esta linha */
+    background-color: rgb(5, 60, 5);
+    /* Cor mais escura ao passar o mouse */
+    transform: translateY(-5px);
+    /* Adicione esta linha */
 }
 
 @media (min-width: 768px) {
     .adicionartabela {
-        padding: 20px 140px; /* Restaura o padding original em telas maiores */
-        /* display: inline-block; */ /* Já será ajustado pelo flex-direction: row no .top-section */
-        margin-left: 0; /* Garante que não haja margem lateral */
-        margin-bottom: 0; /* Remove margem inferior quando em linha */
+        padding: 20px 140px;
+        /* Restaura o padding original em telas maiores */
+        /* display: inline-block; */
+        /* Já será ajustado pelo flex-direction: row no .top-section */
+        margin-left: 0;
+        /* Garante que não haja margem lateral */
+        margin-bottom: 0;
+        /* Remove margem inferior quando em linha */
         transform: none;
     }
 }
@@ -324,29 +420,40 @@
 .voltartabela {
     background-color: rgb(67, 68, 67);
     color: white;
-    padding: 10px 30px; /* Reduzi o padding horizontal para telas menores */
+    padding: 10px 30px;
+    /* Reduzi o padding horizontal para telas menores */
     border-radius: 10px;
     /* Removi margin-left fixo para melhor centralização/alinhamento com flexbox */
-    margin-bottom: 15px; /* Espaço abaixo do botão */
+    margin-bottom: 15px;
+    /* Espaço abaixo do botão */
     font-weight: bolder;
-    width: auto; /* Largura automática */
-    /* display: block; */ /* Já é block por padrão em flex-direction column */
-    text-align: center; /* Centraliza o texto dentro do botão */
+    width: auto;
+    /* Largura automática */
+    /* display: block; */
+    /* Já é block por padrão em flex-direction column */
+    text-align: center;
+    /* Centraliza o texto dentro do botão */
     transition: 0.6s;
 }
 
 .voltartabela:hover {
     cursor: pointer;
-    background-color: rgb(110, 112, 110); /* Cor mais escura ao passar o mouse */
-    transform: translateY(-5px); /* Adicione esta linha */
+    background-color: rgb(110, 112, 110);
+    /* Cor mais escura ao passar o mouse */
+    transform: translateY(-5px);
+    /* Adicione esta linha */
 }
 
 @media (min-width: 768px) {
     .voltartabela {
-        padding: 20px 140px; /* Restaura o padding original em telas maiores */
-        /* display: inline-block; */ /* Já será ajustado pelo flex-direction: row no .top-section */
-        margin-left: 0; /* Garante que não haja margem lateral */
-        margin-bottom: 0; /* Remove margem inferior quando em linha */
+        padding: 20px 140px;
+        /* Restaura o padding original em telas maiores */
+        /* display: inline-block; */
+        /* Já será ajustado pelo flex-direction: row no .top-section */
+        margin-left: 0;
+        /* Garante que não haja margem lateral */
+        margin-bottom: 0;
+        /* Remove margem inferior quando em linha */
         transform: none;
     }
 }
@@ -354,15 +461,22 @@
 /* Primeira Tabela (Container do Scroll) */
 .primeiratebela {
     /* Removendo bordas e radius que já são aplicadas no wrapper Tailwind dentro do HTML */
-    height: auto; /* Deixe a altura ser controlada pelo conteúdo e max-h do Tailwind */
-    width: 100%; /* Ocupa 100% do pai para melhor responsividade */
+    height: auto;
+    /* Deixe a altura ser controlada pelo conteúdo e max-h do Tailwind */
+    width: 100%;
+    /* Ocupa 100% do pai para melhor responsividade */
     margin: auto;
     /* Removido padding-left/right aqui, use padding no .principal ou no td/th */
-    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
-    flex-grow: 1; /* Permite que a tabela ocupe o espaço restante */
-    overflow-x: auto; /* Adicionado para permitir scroll horizontal na tabela em telas pequenas */
-    -webkit-overflow-scrolling: touch; /* Melhora o scroll em dispositivos iOS */
-    margin-bottom: 0; /* Remove espaço extra abaixo da tabela */
+    box-sizing: border-box;
+    /* Garante que padding e border sejam incluídos na largura/altura */
+    flex-grow: 1;
+    /* Permite que a tabela ocupe o espaço restante */
+    overflow-x: auto;
+    /* Adicionado para permitir scroll horizontal na tabela em telas pequenas */
+    -webkit-overflow-scrolling: touch;
+    /* Melhora o scroll em dispositivos iOS */
+    margin-bottom: 0;
+    /* Remove espaço extra abaixo da tabela */
 }
 
 /* Garante que o overflow-y-auto e max-h-96 funcionem corretamente */
@@ -374,10 +488,11 @@
     min-height: 200px;
     overflow-y: auto;
     overflow-x: auto;
-    margin-bottom: 0; /* Remove espaço extra abaixo da tabela */
+    margin-bottom: 0;
+    /* Remove espaço extra abaixo da tabela */
 }
 
-.codigoContratoSelect{
+.codigoContratoSelect {
     border: 2px solid #918787;
     margin-top: 2vh;
     width: 70vh;
@@ -385,7 +500,7 @@
     border-radius: 10px;
 }
 
-.codigoContratoSelect:hover{
+.codigoContratoSelect:hover {
     cursor: pointer;
 
 }
@@ -401,59 +516,61 @@
     border-radius: 10px;
     display: none;
 }
+
 .autocomplete-item {
     padding: 8px;
     cursor: pointer;
     transition: 0.5s;
 }
+
 .autocomplete-item:hover {
     background: #f0f0f0;
     transition: 0.5s ease-in-out;
 }
 
 .inputobs {
-    border: 2px solid rgb(124, 124, 124); 
+    border: 2px solid rgb(124, 124, 124);
     border-radius: 5px;
     padding: 8px;
 }
 
-.selectsts{
+.selectsts {
     border: 2px solid rgb(124, 124, 124);
     padding: 8px;
     border-radius: 5px;
 }
 
-.formt{
+.formt {
     cursor: pointer;
     transition: 0.5s;
     color: #555555;
-    
+
 }
 
-.formt:hover{
+.formt:hover {
     color: rgb(9, 117, 241);
     transition: 0.5s ease-out;
 }
 
-.lixeira{
+.lixeira {
     cursor: pointer;
     transition: 0.5s;
     color: #555555;
 }
 
-.lixeira:hover{
+.lixeira:hover {
     cursor: pointer;
     transition: 0.5s ease-out;
     color: #d31212;
 }
 
-.confirmar{
+.confirmar {
     cursor: pointer;
     transition: 0.5s ease-out;
     color: #555555;
 }
 
-.confirmar:hover{
+.confirmar:hover {
     cursor: pointer;
     transition: 0.5s ease-out;
     color: #0bc051;
@@ -461,21 +578,30 @@
 
 /* Responsividade para a segunda tabela (tabela de contratos) */
 @media (max-width: 900px) {
-    .secundaria table, .secundaria thead, .secundaria tbody, .secundaria th, .secundaria td, .secundaria tr {
+
+    .secundaria table,
+    .secundaria thead,
+    .secundaria tbody,
+    .secundaria th,
+    .secundaria td,
+    .secundaria tr {
         display: block;
         width: 100%;
     }
+
     .secundaria thead {
         display: none;
     }
+
     .secundaria tr {
         margin-bottom: 18px;
         border: 1px solid #ccc;
         border-radius: 8px;
         background: #fff;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
         padding: 8px 0;
     }
+
     .secundaria td {
         position: relative;
         padding-left: 50%;
@@ -485,9 +611,11 @@
         text-align: left;
         box-sizing: border-box;
     }
+
     .secundaria td:last-child {
         border-bottom: none;
     }
+
     .secundaria td:before {
         position: absolute;
         top: 8px;
@@ -498,11 +626,15 @@
         color: #333;
         content: attr(data-label);
     }
-    .secundaria .formt, .secundaria .lixeira {
+
+    .secundaria .formt,
+    .secundaria .lixeira {
         text-align: left;
         padding-left: 50%;
     }
-    .secundaria input, .secundaria select {
+
+    .secundaria input,
+    .secundaria select {
         width: 90%;
         min-width: 120px;
         margin-top: 4px;
@@ -512,7 +644,9 @@
 
 /* Ajuste para ícones ficarem alinhados em telas pequenas */
 @media (max-width: 900px) {
-    .secundaria .fa-file, .secundaria .fa-trash-can {
+
+    .secundaria .fa-file,
+    .secundaria .fa-trash-can {
         font-size: 1.5em;
         margin-top: 4px;
     }
@@ -526,7 +660,8 @@
 }
 
 .secundaria .tabela-scroll {
-    max-height: 60vh; /* Ajuste conforme necessário para caber na tela */
+    max-height: 60vh;
+    /* Ajuste conforme necessário para caber na tela */
     overflow-y: auto;
     display: block;
 }
@@ -547,14 +682,16 @@
 
 /* Ajuste de largura e centralização para a segunda tabela e seu container */
 .secundaria {
-    max-width: 1200px; /* igual ou próximo à primeira tabela */
+    max-width: 1200px;
+    /* igual ou próximo à primeira tabela */
     margin: 0 auto;
     padding: 10px 10px 0 10px;
 }
 
 .secundaria .tabela-scroll {
     max-width: 100%;
-    max-height: 55vh; /* levemente menor para caber melhor na tela */
+    max-height: 55vh;
+    /* levemente menor para caber melhor na tela */
     margin: 0 auto;
     padding: 0;
 }
@@ -565,7 +702,8 @@
     margin: 0 auto;
 }
 
-.secundaria th, .secundaria td {
+.secundaria th,
+.secundaria td {
     padding: 6px 8px;
 }
 
@@ -583,7 +721,7 @@
 
 .secundaria .tabela-scroll {
     max-width: 100%;
-    max-height: 60vh;
+    max-height: 55vh;
     margin: 0 auto;
     padding: 0;
 }
@@ -594,7 +732,8 @@
     margin: 0 auto;
 }
 
-.secundaria th, .secundaria td {
+.secundaria th,
+.secundaria td {
     padding: 10px 8px;
 }
 
@@ -602,6 +741,7 @@
     .secundaria {
         max-width: 98vw;
     }
+
     .secundaria table {
         width: 100%;
     }
@@ -612,19 +752,19 @@
 /* Tabela demostrativo de salvando as informaçoes  */
 
 .tabelacarregando {
- position: absolute;
- background-color: white;
- width: 30%;
- height: 40%; 
- top: 35%;
- left: 35%;
- border: 2px solid #949090;
- border-radius: 10px;
- box-shadow: 3px 3px 3px #949090;
- display: none;
+    position: absolute;
+    background-color: white;
+    width: 30%;
+    height: 40%;
+    top: 35%;
+    left: 35%;
+    border: 2px solid #949090;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px #949090;
+    display: none;
 }
 
-.tabelacarregando > h1 {
+.tabelacarregando>h1 {
     font-weight: bolder;
     text-align: center;
     font-size: 1.5em;
@@ -633,29 +773,202 @@
 }
 
 .spinner {
-  width: 100px;
-  height: 100px;
-  background-color: rgb(7, 80, 7);
+    width: 100px;
+    height: 100px;
+    background-color: rgb(7, 80, 7);
     margin: 60px auto;
-  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
-  animation: sk-rotateplane 1.2s infinite ease-in-out;
+    -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+    animation: sk-rotateplane 1.2s infinite ease-in-out;
 }
 
 @-webkit-keyframes sk-rotateplane {
-  0% { -webkit-transform: perspective(120px) }
-  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
-  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+    0% {
+        -webkit-transform: perspective(120px)
+    }
+
+    50% {
+        -webkit-transform: perspective(120px) rotateY(180deg)
+    }
+
+    100% {
+        -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+    }
 }
 
 @keyframes sk-rotateplane {
-  0% { 
-    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
-  } 50% { 
-    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
-  } 100% { 
-    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-  }
+    0% {
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+    }
+
+    50% {
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    }
+
+    100% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+}
+
+/* ANIMAÇÃO CHECK */
+
+.check-container {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    margin-left: 40%;
+}
+
+.checkmark-group {
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilos e animação para o CÍRCULO VERDE SÓLIDO */
+.animated-circle {
+    fill: rgb(7, 80, 7);
+    /* Preenchimento verde sólido */
+    stroke: none;
+    /* Remove qualquer contorno */
+
+    transform-origin: center;
+    transform: scale(0);
+    /* Começa invisível e pequeno */
+    opacity: 0;
+    /* Começa transparente */
+    animation: growAndFadeInCircle 0.5s ease-out forwards;
+    /* Animação combinada */
+    animation-delay: 0.1s;
+    /* Pequeno atraso para iniciar */
+}
+
+/* Estilos e animação para o path do check */
+.check-path {
+    fill: none;
+    /* Não preenche a seta, ela será desenhada como um traço */
+    stroke-width: 4;
+    /* ALTERE ESTE VALOR PARA DEIXAR MAIS FINA OU MAIS GROSSA */
+    /* Espessura da linha do check para deixá-lo "gordinho" */
+    stroke: #FFFFFF;
+    /* Cor do traço da seta: BRANCA */
+
+    /* Propriedades para a animação de traçado da seta */
+    stroke-dasharray: 21.21;
+    /* Comprimento exato do path do check */
+    stroke-dashoffset: 21.21;
+    /* Inicia o check invisível */
+
+    /* Propriedades para bordas arredondadas do check */
+    stroke-linecap: round;
+    /* Arredonda as extremidades da linha do check */
+    stroke-linejoin: round;
+    /* Arredonda os cantos (a 'dobra') do check */
+
+    /* Animação para o check ser desenhado */
+    animation: drawCheck 0.4s linear forwards;
+    animation-delay: 0.6s;
+    /* Atraso: após o círculo crescer */
+
+    /* ADIÇÃO: Garante que a seta começa completamente invisível */
+    opacity: 0;
+}
+
+/* Keyframes para animar o círculo a crescer e aparecer */
+@keyframes growAndFadeInCircle {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Keyframes para animar o check a ser desenhado */
+@keyframes drawCheck {
+    from {
+        stroke-dashoffset: 21.21;
+        opacity: 0;
+        /* Começa completamente invisível */
+    }
+
+    to {
+        stroke-dashoffset: 0;
+        opacity: 1;
+        /* Termina completamente visível */
+    }
+}
+
+/* DIV EXCLUSÃO DE CONTRATO */
+
+.exclusaotela {
+    position: absolute;
+    background-color: white;
+    width: 30%;
+    height: 40%;
+    top: 35%;
+    left: 35%;
+    border: 2px solid #949090;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px #949090;
+    display: none;
+}
+
+.exclusaotela>h1 {
+    font-weight: 400;
+    text-align: center;
+    font-size: 1.8em;
+    color: #000000;
+    margin-top: 60px;
+}
+
+.exclusaotela>p {
+    font-weight: 500;
+    text-align: center;
+    font-size: 0.8em;
+    color: #5f5e5e;
+    margin-top: 10px;
+}
+
+.btnnaoo {
+    background-color: rgb(7, 80, 7);
+    color: white;
+    width: 35%;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 15%;
+    transition: 0.5s;
+}
+
+.bntsimm {
+    background-color: rgb(95, 6, 6);
+    color: white;
+    width: 35%;
+    padding: 5px;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.btnnaoo:hover {
+    cursor: pointer;
+    background-color: rgb(6, 141, 6);
+    /* Cor mais escura ao passar o mouse */
+    transform: translateY(-5px);
+    /* Adicione esta linha */
+}
+
+.bntsimm:hover {
+    cursor: pointer;
+    background-color: rgb(207, 43, 31);
+    /* Cor mais escura ao passar o mouse */
+    transform: translateY(-5px);
+    /* Adicione esta linha */
 }

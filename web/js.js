@@ -201,6 +201,9 @@ function AdicionarItem() {
 
     // Garante que a div de carregamento está no body e com z-index maior
     const divCarregamento = document.getElementById('tabelacarregando');
+    const spinner = divCarregamento ? divCarregamento.querySelector('.spinner') : null;
+    const checkDiv = document.getElementById('checkconfimar');
+
     if (divCarregamento) {
         divCarregamento.style.display = 'block';
         divCarregamento.style.width = "30%";
@@ -210,5 +213,82 @@ function AdicionarItem() {
         divCarregamento.style.transition = 'opacity 0.4s';
         document.body.appendChild(divCarregamento);
         setTimeout(() => { divCarregamento.style.opacity = '1'; }, 50);
+    }
+
+    // Mostra o spinner e esconde o check
+    if (spinner) spinner.style.display = 'block';
+    if (checkDiv) checkDiv.style.display = 'none';
+
+    // Após 3 segundos, esconde o spinner e mostra o check
+    setTimeout(() => {
+        const h1 = document.getElementById('salvarh1');
+        if (spinner) spinner.style.display = 'none';
+        if (checkDiv) checkDiv.style.display = 'flex';
+        if (h1) h1.innerHTML = 'Alterações salvas com sucesso!';
+    }, 2000);
+}
+
+
+function RemoverItem() {
+    // Cria o overlay se não existir
+    let overlay = document.getElementById('overlay-carregamento');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'overlay-carregamento';
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100vw';
+        overlay.style.height = '100vh';
+        overlay.style.background = 'rgba(128,128,128,0.85)';
+        overlay.style.zIndex = '8888';
+        overlay.style.opacity = '0';
+        overlay.style.transition = 'opacity 0.4s';
+        overlay.style.display = 'block';
+        document.body.appendChild(overlay);
+        setTimeout(() => { overlay.style.opacity = '1'; }, 10);
+    } else {
+        overlay.style.display = 'block';
+        overlay.style.transition = 'opacity 0.4s';
+        overlay.style.opacity = '0';
+        setTimeout(() => { overlay.style.opacity = '1'; }, 10);
+    }
+
+    const divRemover = document.getElementById('exclusaotela');
+    const atalhoRemover = document.getElementById('removeritem');
+
+    if (divRemover && atalhoRemover) {
+        // Exibe a tela de confirmação com animação de transição
+        divRemover.style.display = 'block';
+        divRemover.style.width = "30%";
+        divRemover.style.height = "33%";
+        divRemover.style.boxShadow = '3px 3px 8px rgba(0, 0, 0, 0.64)';
+        divRemover.style.opacity = '1';
+        divRemover.style.zIndex = '8889';
+        divRemover.style.transform = 'scale(0.7)';
+        divRemover.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s';
+
+        document.body.appendChild(divRemover);
+
+        // Dispara a animação para o tamanho original
+        setTimeout(() => {
+            divRemover.style.transform = 'scale(1)';
+        }, 10);
+    }
+}
+
+function SairRemoverItem() {
+    const divRemover = document.getElementById('exclusaotela');
+    const overlay = document.getElementById('overlay-carregamento');
+
+    if (divRemover) {
+        divRemover.style.transform = 'scale(0.7)';
+        divRemover.style.opacity = '0';
+        divRemover.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s';
+
+        setTimeout(() => {
+            divRemover.style.display = 'none';
+            if (overlay) overlay.style.display = 'none';
+        }, 400);
     }
 }

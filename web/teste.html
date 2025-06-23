@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação de Check Perfeita</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .check-container {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .checkmark-group {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Estilos e animação para o CÍRCULO VERDE SÓLIDO */
+        .animated-circle {
+            fill: #4CAF50;
+            /* Preenchimento verde sólido */
+            stroke: none;
+            /* Remove qualquer contorno */
+
+            transform-origin: center;
+            transform: scale(0);
+            /* Começa invisível e pequeno */
+            opacity: 0;
+            /* Começa transparente */
+            animation: growAndFadeInCircle 0.5s ease-out forwards;
+            /* Animação combinada */
+            animation-delay: 0.1s;
+            /* Pequeno atraso para iniciar */
+        }
+
+        /* Estilos e animação para o path do check */
+        .check-path {
+            fill: none;
+            /* Não preenche a seta, ela será desenhada como um traço */
+            stroke-width: 4;
+            /* ALTERE ESTE VALOR PARA DEIXAR MAIS FINA OU MAIS GROSSA */
+            /* Espessura da linha do check para deixá-lo "gordinho" */
+            stroke: #FFFFFF;
+            /* Cor do traço da seta: BRANCA */
+
+            /* Propriedades para a animação de traçado da seta */
+            stroke-dasharray: 21.21;
+            /* Comprimento exato do path do check */
+            stroke-dashoffset: 21.21;
+            /* Inicia o check invisível */
+
+            /* Propriedades para bordas arredondadas do check */
+            stroke-linecap: round;
+            /* Arredonda as extremidades da linha do check */
+            stroke-linejoin: round;
+            /* Arredonda os cantos (a 'dobra') do check */
+
+            /* Animação para o check ser desenhado */
+            animation: drawCheck 0.4s linear forwards;
+            animation-delay: 0.6s;
+            /* Atraso: após o círculo crescer */
+
+            /* ADIÇÃO: Garante que a seta começa completamente invisível */
+            opacity: 0;
+        }
+
+        /* Keyframes para animar o círculo a crescer e aparecer */
+        @keyframes growAndFadeInCircle {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Keyframes para animar o check a ser desenhado */
+        @keyframes drawCheck {
+            from {
+                stroke-dashoffset: 21.21;
+                opacity: 0;
+                /* Começa completamente invisível */
+            }
+
+            to {
+                stroke-dashoffset: 0;
+                opacity: 1;
+                /* Termina completamente visível */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="check-container">
+        <svg class="checkmark-group" viewBox="0 0 58 58">
+            <circle class="animated-circle" cx="29" cy="29" r="25" />
+            <path class="check-path" d="M21 29.5l5 5 10-10" />
+        </svg>
+    </div>
+
+</body>
+
+</html>

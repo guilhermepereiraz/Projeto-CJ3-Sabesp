@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="text/javascript" src="/eel.js"></script>
     <script src="js.js"></script>
+    <link rel="shortcut icon" href="Imagens/teste.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -15,7 +16,7 @@
 <body>
     <header class="flex items-center justify-between p-4 bg-green-900 text-white">
         <div class="flex items-center">
-            <img src="IconeExatas.png" alt="Logo" class="h-10 w-10 rounded-full">
+            <img src="Imagens/IconeExata.png" alt="Logo" class="logoImagem">
         </div>
 
         <div class="iconeperfil">
@@ -26,9 +27,11 @@
         </div>
     </header>
 
-    <h1 style="text-align: center; margin: 1%; font-size: 2em; font-weight: bolder; margin-bottom: 0%; display: block;" id="tabelaProjetosTitle">
+    <h1 style="text-align: center; margin: 1%; font-size: 2em; font-weight: bolder; margin-bottom: 0%; display: block;"
+        id="tabelaProjetosTitle">
         Tabela Projetos</h1>
-    <h1 style="text-align: center; margin: 1%; font-size: 2em; font-weight: bolder; margin-bottom: 0%; display: none;" id="tabelaContratoTitle">Contrato para
+    <h1 style="text-align: center; margin: 1%; font-size: 2em; font-weight: bolder; margin-bottom: 0%; display: none;"
+        id="tabelaContratoTitle">Contrato para
         Imobilizar</h1>
     <main>
 
@@ -55,16 +58,21 @@
             <p style="font-weight: bolder;">Contrato</p>
             <div class="top-section">
                 <div class="top-section" style="position: relative;">
-                    <input type="text" id="codigoContratoInput" name="codigoContrato" placeholder="Código do contrato" autocomplete="off" class="codigoContratoSelect">
-                    <div id="sugestoesContrato" class="autocomplete-list" style="position:absolute;top:100%;left:0;width:100%;background:#fff;z-index:1000;border:1px solid #ccc;display:none;"></div>
+                    <input type="text" id="codigoContratoInput" name="codigoContrato" placeholder="Código do contrato"
+                        autocomplete="off" class="codigoContratoSelect">
+                    <div id="sugestoesContrato" class="autocomplete-list"
+                        style="position:absolute;top:100%;left:0;width:100%;background:#fff;z-index:1000;border:1px solid #ccc;display:none;">
+                    </div>
                 </div>
                 <button class="adicionartabela">Adicionar</button>
                 <button class="voltartabela" onclick="voltarPag()">Voltar</button>
             </div>
 
             <!-- Tabela adicionada -->
-            <div class="tabela-scroll" style="margin-top: 32px; overflow-x: auto; border: 2px solid black; border-radius: 5px;" id="tabela-scroll">
-                <table border="1" style="width:100%; border-collapse: collapse; text-align: center; background: #fff;" >
+            <div class="tabela-scroll"
+                style="margin-top: 32px; overflow-x: auto; border: 2px solid black; border-radius: 10px;"
+                id="tabela-scroll">
+                <table border="1" style="width:100%; border-collapse: collapse; text-align: center; background: #fff;">
                     <thead style="background: #e5e7eb;">
                         <tr>
                             <th>ID</th>
@@ -101,8 +109,10 @@
                                 </select>
                             </td>
                             <td class="formt"><i class="fa-regular fa-file fa-2x"></i></td>
-                            <td class="lixeira"><i class="fa-regular fa-trash-can fa-2x"></i></td>
-                            <td class="confirmar" id="adicionaritem" onclick="AdicionarItem()"><i class="fa-solid fa-check fa-2x"></i></td>
+                            <td class="lixeira" id="removeritem" onclick="RemoverItem()"><i
+                                    class="fa-regular fa-trash-can fa-2x"></i></td>
+                            <td class="confirmar" id="adicionaritem" onclick="AdicionarItem()"><i
+                                    class="fa-solid fa-check fa-2x"></i></td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -417,8 +427,26 @@
             </div>
 
             <div id="tabelacarregando" class="tabelacarregando">
-                <h1>Salvando alterações...</h1>
+                <h1 id="salvarh1">Salvando alterações...</h1>
                 <div class="spinner"></div>
+
+                <div class="check-container" id="checkconfimar">
+                    <svg class="checkmark-group" viewBox="0 0 58 58">
+                        <circle class="animated-circle" cx="29" cy="29" r="25" />
+                        <path class="check-path" d="M21 29.5l5 5 10-10" />
+                    </svg>
+                </div>
+
+            </div>
+
+            <div id="exclusaotela" class="exclusaotela">
+                <h1>Tem certeza que deseja excluir <br>esse contrato da sua lista ?</h1>
+                <p>O contrato NÃO será excluido do banco de dados</p>
+
+                <div>
+                    <button class="btnnaoo" onclick="SairRemoverItem()">Não</button>
+                    <button class="bntsimm">Sim</button>
+                </div>
 
             </div>
     </main>
